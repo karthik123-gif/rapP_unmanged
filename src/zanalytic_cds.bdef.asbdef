@@ -1,0 +1,22 @@
+managed implementation in class zbp_analytic_cds unique;
+strict ( 2 );
+
+define behavior for zanalytic_cds //alias <alias_name>
+persistent table zanalytic
+lock master
+authorization master ( instance )
+//etag master <field_name>
+{
+  create;
+  update;
+  delete;
+  field ( readonly : update ) SalesOrg, Customer, Material, SalesDate;
+
+  mapping for zanalytic {
+  Customer =  customer;
+  Material = material;
+ SalesAmount = sales_amount;
+ SalesDate = sales_date;
+
+  }
+}
